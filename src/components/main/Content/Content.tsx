@@ -47,9 +47,9 @@ const MainContent = () => {
   return (
     <StyledMainContent>
       <Title>
-        골든 글러브는 누구의 것?
+        골든 글러브의 주인공은?
         <br />
-        당신만의 팀은 어디?
+        당신의 팀을 추천합니다.
       </Title>
       <br />
       <SubTitle>
