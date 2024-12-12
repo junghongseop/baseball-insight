@@ -90,8 +90,9 @@ const BackgroundCircle = styled.div`
   position: absolute;
   width: 750px;
   height: 750px;
-  background: radial-gradient(circle, ${({ color }) => color} 5%, transparent);
+  background: radial-gradient(circle, ${({ color }) => color} 0%, transparent);
   filter: blur(150px);
+  opacity: 0.5;
   z-index: 0;
   bottom: 0px;
   right: 0px;
