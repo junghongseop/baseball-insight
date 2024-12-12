@@ -142,7 +142,7 @@ const SubTitle = styled.div`
   bottom: 100px;
   left: 50px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 500;
   color: #6e6e82;
   text-align: left;
 `;

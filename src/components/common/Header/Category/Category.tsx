@@ -30,6 +30,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: #75777d;
   font-size: 16px;
+  font-weight: 500;
   transition: color 0.2s ease-in-out;
 
   margin: 0 30px;
