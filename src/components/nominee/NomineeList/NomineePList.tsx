@@ -75,7 +75,6 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(550px, 1fr));
   gap: 32px;
-  padding: 32px;
   justify-items: center;
   align-items: start;
   margin: 0 auto;
