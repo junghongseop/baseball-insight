@@ -11,8 +11,12 @@
   "dependencies": {
     "@toss/use-overlay": "^1.4.2",
     "@types/styled-components": "^5.1.34",
+    "apexcharts": "^4.2.0",
+    "chart.js": "^4.4.7",
     "next": "14.1.0",
     "react": "^18",
+    "react-apexcharts": "^1.7.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-spinners": "^0.15.0",
     "styled-components": "^6.1.13"
