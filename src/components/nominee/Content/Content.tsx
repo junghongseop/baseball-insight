@@ -7,6 +7,7 @@ import NomineeSSList from '../NomineeList/NomineeSSList';
 import NomineeCList from '../NomineeList/NomineeCList';
 import NomineeOutFilederList from '../NomineeList/NomineeOutFilederList';
 import NomineePList from '../NomineeList/NomineePList';
+import NomineeDHList from '../NomineeList/NomineeDHList';
 
 const NomineeContent = () => {
   const [selectedPosition, setSelectedPosition] = useState<string>('전체');
@@ -42,6 +43,10 @@ const NomineeContent = () => {
           <Wrapper>
             <Title>외야수 후보</Title>
             <NomineeOutFilederList />
+          </Wrapper>
+          <Wrapper>
+            <Title>지명타자 후보</Title>
+            <NomineeDHList />
           </Wrapper>
         </ListWrapper>
       );
@@ -97,6 +102,13 @@ const NomineeContent = () => {
             <NomineeOutFilederList />
           </PositionWrapper>
         );
+      case '지명타자':
+        return (
+          <PositionWrapper>
+            <Title>지명타자 후보</Title>
+            <NomineeDHList />
+          </PositionWrapper>
+        );
       default:
         return null;
     }
@@ -105,17 +117,25 @@ const NomineeContent = () => {
   return (
     <StyledNomineeContent>
       <FilterContainer>
-        {['전체', '투수', '포수', '1루수', '2루수', '3루수', '유격수', '외야수'].map(
-          (position) => (
-            <FilterButton
-              key={position}
-              active={selectedPosition === position}
-              onClick={() => setSelectedPosition(position)}
-            >
-              {position}
-            </FilterButton>
-          )
-        )}
+        {[
+          '전체',
+          '투수',
+          '포수',
+          '1루수',
+          '2루수',
+          '3루수',
+          '유격수',
+          '외야수',
+          '지명타자',
+        ].map((position) => (
+          <FilterButton
+            key={position}
+            active={selectedPosition === position}
+            onClick={() => setSelectedPosition(position)}
+          >
+            {position}
+          </FilterButton>
+        ))}
       </FilterContainer>
       {renderList()}
     </StyledNomineeContent>
