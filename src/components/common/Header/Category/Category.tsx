@@ -7,7 +7,6 @@ const Category = () => {
       <StyledLink href="/">홈</StyledLink>
       <StyledLink href="/nominee">후보자</StyledLink>
       <StyledLink href="/prediction">골든 글러브 예측</StyledLink>
-      <StyledLink href="/recommand">팀 추천</StyledLink>
     </StyledCategory>
   );
 };
@@ -16,8 +15,8 @@ export default Category;
 
 const StyledCategory = styled.div`
   width: 100%;
-  max-width: 520px;
-  min-width: 520px;
+  max-width: 400px;
+  min-width: 400px;
   height: 48px;
   background-color: hsla(0, 0%, 100%, 0.6);
   border-radius: 200px;
