@@ -1,6 +1,6 @@
 import NomineeItem from './NomineeItem/NomineeItem';
 import { useState, useEffect } from 'react';
-import firstBaseMan from '@/data/nominee/firstBaseman.json';
+import dh from '@/data/nominee/designatedHitter.json';
 import { styled } from 'styled-components';
 import { useRouter } from 'next/navigation';
 
@@ -10,7 +10,7 @@ interface Player {
   imageUrl: string | undefined;
   구단: string;
   경기: number;
-  수비이닝: string;
+  지명타자타석: number;
   타율: number;
   득점: number;
   안타: number;
@@ -19,20 +19,16 @@ interface Player {
   도루: number;
   장타율: number;
   출루율: number;
-  수비율: number;
-  실책: number;
-  자살: number;
-  보살: number;
-  비고: string | { [key: string]: string | undefined };
+  비고: string | { [key: string]: string | undefined } | null;
 }
 
-const Nominee1BList = () => {
+const NomineeDHList = () => {
   const router = useRouter();
   const [firstBasemen, setFirstBasemen] = useState<Player[]>([]);
 
   useEffect(() => {
     const fetchFirstBasemen = async () => {
-      const data: Player[] = await Promise.resolve(firstBaseMan);
+      const data: Player[] = await Promise.resolve(dh);
       setFirstBasemen(data);
     };
 
@@ -59,7 +55,7 @@ const Nominee1BList = () => {
   );
 };
 
-export default Nominee1BList;
+export default NomineeDHList;
 
 const GridContainer = styled.div`
   display: grid;

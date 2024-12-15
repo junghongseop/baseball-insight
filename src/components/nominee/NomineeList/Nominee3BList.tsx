@@ -10,7 +10,7 @@ interface Player {
   imageUrl: string | undefined;
   구단: string;
   경기: number;
-  '3루수 수비이닝': string;
+  수비이닝: string;
   타율: number;
   득점: number;
   안타: number;
