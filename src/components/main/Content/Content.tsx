@@ -49,11 +49,11 @@ const MainContent = () => {
       <Title>
         골든 글러브의 주인공은?
         <br />
-        당신의 팀을 추천합니다.
+        예측된 후보와 수상자를 만나보세요.
       </Title>
       <br />
       <SubTitle>
-        수상자 예측과 팀 추천을 통해 야구 팬들에게 새로운 관점을 제공합니다.
+        골든 글러브 수상자 예측을 통해 야구 팬들에게 새로운 관점을 제공합니다.
       </SubTitle>
       {isSpinning ? (
         <Logo src={currentTeam.logo} alt="Spinning Team Logo" width={400} height={400} />
