@@ -17,11 +17,10 @@ const MainContent = () => {
   ];
 
   const [currentTeam, setCurrentTeam] = useState(teams[0]);
-  const [selectedTeam, setSelectedTeam] = useState(teams[0]);
   const [isSpinning, setIsSpinning] = useState(true);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: string | number | NodeJS.Timeout | undefined;
 
     const startSpinning = () => {
       interval = setInterval(() => {
@@ -33,6 +32,8 @@ const MainContent = () => {
     const stopSpinning = () => {
       setTimeout(() => {
         clearInterval(interval);
+        const randomIndex = Math.floor(Math.random() * teams.length);
+        setCurrentTeam(teams[randomIndex]);
         setIsSpinning(false);
       }, 2000);
     };
@@ -58,9 +59,9 @@ const MainContent = () => {
         <Logo src={currentTeam.logo} alt="Spinning Team Logo" width={400} height={400} />
       ) : (
         <>
-          <BackgroundCircle color={selectedTeam.color} />
+          <BackgroundCircle color={currentTeam.color} />
           <FinalLogo
-            src={selectedTeam.logo}
+            src={currentTeam.logo}
             alt="Selected Team Logo"
             width={400}
             height={400}
