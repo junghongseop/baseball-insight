@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const FirstBaseManCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledFirstBaseManCard onClick={() => {}}>
+    <StyledFirstBaseManCard
+      onClick={() => {
+        router.push('/prediction/first-baseman');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledFirstBaseManCard = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-right: 80px;
+  margin-right: 80px;
 `;
 
 const ImageWrapper = styled.div`

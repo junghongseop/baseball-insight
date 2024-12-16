@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const PitcherCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledPitcherCard onClick={() => {}}>
+    <StyledPitcherCard
+      onClick={() => {
+        router.push('/prediction/pitcher');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="카일 하트"
@@ -49,7 +56,7 @@ const ImageWrapper = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 80px;
+  margin-left: 80px;
 `;
 
 const CardInfo = styled.div`

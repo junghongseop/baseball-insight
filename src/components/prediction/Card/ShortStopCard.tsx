@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const ShortStopCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledShortStopCard onClick={() => {}}>
+    <StyledShortStopCard
+      onClick={() => {
+        router.push('prediction/short-stop');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledShortStopCard = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 0px;
+  margin-left: 0px;
 `;
 
 const ImageWrapper = styled.div`

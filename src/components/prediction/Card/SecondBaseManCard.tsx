@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const SecondBaseManCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledSecondBaseManCard onClick={() => {}}>
+    <StyledSecondBaseManCard
+      onClick={() => {
+        router.push('prediction/second-baseman');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledSecondBaseManCard = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 30px;
+  margin-left: 30px;
 `;
 
 const ImageWrapper = styled.div`

@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const OutFileder3Card = () => {
+  const router = useRouter();
+
   return (
-    <StyledOutFileder3Card onClick={() => {}}>
+    <StyledOutFileder3Card
+      onClick={() => {
+        router.push('/prediction/outfilder');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledOutFileder3Card = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 0px;
+  margin-left: 0px;
 `;
 
 const ImageWrapper = styled.div`

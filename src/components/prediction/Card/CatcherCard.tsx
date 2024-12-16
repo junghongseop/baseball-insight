@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const CatcherCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledCatcherCard onClick={() => {}}>
+    <StyledCatcherCard
+      onClick={() => {
+        router.push('/prediction/catcher');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledCatcherCard = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 100px;
+  margin-left: 100px;
 `;
 
 const ImageWrapper = styled.div`

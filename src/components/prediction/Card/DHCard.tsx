@@ -1,9 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const DHCard = () => {
+  const router = useRouter();
+
   return (
-    <StyledDHCard onClick={() => {}}>
+    <StyledDHCard
+      onClick={() => {
+        router.push('prediction/dh');
+      }}
+    >
       <ImageWrapper>
         <StyledImage
           alt="강민호"
@@ -38,7 +45,7 @@ const StyledDHCard = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-    margin-left: 0px;
+  margin-left: 0px;
 `;
 
 const ImageWrapper = styled.div`
