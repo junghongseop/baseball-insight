@@ -14,9 +14,9 @@ const OutFileder3Card = () => {
       <ImageWrapper>
         <StyledImage
           alt="강민호"
-          src="https://cdn.spotvnews.co.kr/news/photo/202412/717728_1133176_3748.jpg"
-          width={300}
-          height={273}
+          src="https://cdn.joongboo.com/news/photo/201912/363389362_2106662_2334.jpg"
+          width={900}
+          height={453}
         />
       </ImageWrapper>
       <CardInfo>
@@ -45,7 +45,7 @@ const StyledOutFileder3Card = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  margin-left: 0px;
+  margin-right: 100px;
 `;
 
 const ImageWrapper = styled.div`

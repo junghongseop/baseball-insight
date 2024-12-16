@@ -72,6 +72,11 @@ const nextConfig = {
         hostname: 'cdn.spotvnews.co.kr',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.joongboo.com',
+        pathname: '/**',
+      },
     ],
   },
 };
