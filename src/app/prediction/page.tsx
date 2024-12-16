@@ -1,5 +1,14 @@
+'use client';
+
+import { Content } from "@/components/prediction";
+import { AppLayout } from "@/layouts";
+
 const PredictionPage = () => {
-  return <div>골든 글러브 예측 페이지</div>;
+  return (
+    <AppLayout header footer>
+      <Content />
+    </AppLayout>
+  );
 };
 
 export default PredictionPage;
