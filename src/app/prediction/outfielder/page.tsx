@@ -13,13 +13,13 @@ import {
   Legend,
 } from 'chart.js';
 import { useState } from 'react';
-import pitcherData from '@/data/prediction/pitcher.json';
+import outfielderData from '@/data/prediction/outFileder.json';
 import Image from 'next/image';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const PredictionCatcherPage = () => {
-  const [first, second] = pitcherData;
+const PredictionOutFilderPage = () => {
+  const [first, second, third, fourth] = outfielderData;
 
   const allStats = Object.keys(first).filter(
     (key) =>
@@ -35,13 +35,33 @@ const PredictionCatcherPage = () => {
     const roundedValue = (value: any) => Math.round(value * 1000) / 1000;
 
     const data = {
-      labels: [`${first.선수명}`, `${second.선수명}`],
+      labels: [
+        `${first.선수명}`,
+        `${second.선수명}`,
+        `${third.선수명}`,
+        `${fourth.선수명}`,
+      ],
       datasets: [
         {
           label: stat,
-          data: [roundedValue(first[stat]), roundedValue(second[stat])],
-          backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-          borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+          data: [
+            roundedValue(first[stat]),
+            roundedValue(second[stat]),
+            roundedValue(third[stat]),
+            roundedValue(fourth[stat]),
+          ],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
           borderWidth: 1,
         },
       ],
@@ -79,34 +99,22 @@ const PredictionCatcherPage = () => {
     <AppLayout header footer>
       <StyledContainer>
         <ImageContainer>
-          <PlayerImageWrapper>
-            <img src={first.imageUrl} alt={first.선수명} />
-            <PlayerInfo>
-              <TeamLogo>
-                <Image
-                  width={30}
-                  height={30}
-                  src={`/teams/${first.구단}.svg`}
-                  alt="구단 로고"
-                />
-              </TeamLogo>
-              <PlayerName>{first.선수명}</PlayerName>
-            </PlayerInfo>
-          </PlayerImageWrapper>
-          <PlayerImageWrapper>
-            <img src={second.imageUrl} alt={second.선수명} />
-            <PlayerInfo>
-              <TeamLogo>
-                <Image
-                  width={30}
-                  height={30}
-                  src={`/teams/${second.구단}.svg`}
-                  alt="구단 로고"
-                />
-              </TeamLogo>
-              <PlayerName>{second.선수명}</PlayerName>
-            </PlayerInfo>
-          </PlayerImageWrapper>
+          {[first, second, third, fourth].map((player) => (
+            <PlayerImageWrapper key={player.id}>
+              <img src={player.imageUrl} alt={player.선수명} />
+              <PlayerInfo>
+                <TeamLogo>
+                  <Image
+                    width={30}
+                    height={30}
+                    src={`/teams/${player.구단}.svg`}
+                    alt="구단 로고"
+                  />
+                </TeamLogo>
+                <PlayerName>{player.선수명}</PlayerName>
+              </PlayerInfo>
+            </PlayerImageWrapper>
+          ))}
         </ImageContainer>
         <FilterContainer>
           {['전체', ...allStats].map((stat) => (
@@ -127,7 +135,7 @@ const PredictionCatcherPage = () => {
   );
 };
 
-export default PredictionCatcherPage;
+export default PredictionOutFilderPage;
 
 const StyledContainer = styled.div`
   width: 100%;

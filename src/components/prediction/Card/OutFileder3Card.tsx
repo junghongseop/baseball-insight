@@ -8,7 +8,7 @@ const OutFileder3Card = () => {
   return (
     <StyledOutFileder3Card
       onClick={() => {
-        router.push('/prediction/outfilder');
+        router.push('/prediction/outfielder');
       }}
     >
       <ImageWrapper>

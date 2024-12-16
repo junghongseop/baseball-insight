@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { AppLayout } from '@/layouts';
@@ -13,13 +12,13 @@ import {
   Legend,
 } from 'chart.js';
 import { useState } from 'react';
-import pitcherData from '@/data/prediction/pitcher.json';
+import thirdData from '@/data/prediction/thirdBaseMan.json';
 import Image from 'next/image';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const PredictionCatcherPage = () => {
-  const [first, second] = pitcherData;
+const PredictionThirdBasemanPage = () => {
+  const [first, second] = thirdData;
 
   const allStats = Object.keys(first).filter(
     (key) =>
@@ -127,7 +126,7 @@ const PredictionCatcherPage = () => {
   );
 };
 
-export default PredictionCatcherPage;
+export default PredictionThirdBasemanPage;
 
 const StyledContainer = styled.div`
   width: 100%;

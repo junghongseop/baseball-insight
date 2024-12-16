@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import { useState } from 'react';
 import catcherData from '@/data/prediction/catcher.json';
+import Image from 'next/image';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -78,15 +79,33 @@ const PredictionCatcherPage = () => {
     <AppLayout header footer>
       <StyledContainer>
         <ImageContainer>
-          <PlayerImageWrapper teamLogo={`/teams/${first.구단}.svg`}>
+          <PlayerImageWrapper>
             <img src={first.imageUrl} alt={first.선수명} />
-            <PlayerName>{first.선수명}</PlayerName>
-            <p>{first.비고}</p>
+            <PlayerInfo>
+              <TeamLogo>
+                <Image
+                  width={30}
+                  height={30}
+                  src={`/teams/${first.구단}.svg`}
+                  alt="구단 로고"
+                />
+              </TeamLogo>
+              <PlayerName>{first.선수명}</PlayerName>
+            </PlayerInfo>
           </PlayerImageWrapper>
-          <PlayerImageWrapper teamLogo={`/teams/${second.구단}.svg`}>
+          <PlayerImageWrapper>
             <img src={second.imageUrl} alt={second.선수명} />
-            <PlayerName>{second.선수명}</PlayerName>
-            <p>{second.비고}</p>
+            <PlayerInfo>
+              <TeamLogo>
+                <Image
+                  width={30}
+                  height={30}
+                  src={`/teams/${second.구단}.svg`}
+                  alt="구단 로고"
+                />
+              </TeamLogo>
+              <PlayerName>{second.선수명}</PlayerName>
+            </PlayerInfo>
           </PlayerImageWrapper>
         </ImageContainer>
         <FilterContainer>
@@ -112,7 +131,7 @@ export default PredictionCatcherPage;
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: 130vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,11 +142,11 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 200px;
+  gap: 50px;
   margin-bottom: 20px;
 `;
 
-const PlayerImageWrapper = styled.div<{ teamLogo: string }>`
+const PlayerImageWrapper = styled.div`
   position: relative;
   text-align: center;
 
@@ -138,26 +157,28 @@ const PlayerImageWrapper = styled.div<{ teamLogo: string }>`
     z-index: 2;
     position: relative;
   }
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -25px;
-    left: 48%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 200px;
-    background-image: ${({ teamLogo }) => `url(${teamLogo})`};
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;
-    z-index: 1;
+const PlayerInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+`;
+
+const TeamLogo = styled.div`
+  width: 30px;
+  height: 30px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 
 const PlayerName = styled.div`
-  margin-top: 8px;
   font-size: 18px;
   font-weight: 700;
   color: black;

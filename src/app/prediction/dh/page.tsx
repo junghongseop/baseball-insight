@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import { useState } from 'react';
 import dhData from '@/data/prediction/designatedHitter.json';
+import Image from 'next/image';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -91,10 +92,19 @@ const PredictionDHPage = () => {
       <StyledContainer>
         <ImageContainer>
           {[first, second, third].map((player, index) => (
-            <PlayerImageWrapper key={index} teamLogo={`/teams/${player.구단}.svg`}>
+            <PlayerImageWrapper key={player.id}>
               <img src={player.imageUrl} alt={player.선수명} />
-              <PlayerName>{player.선수명}</PlayerName>
-              <p>{player.비고}</p>
+              <PlayerInfo>
+                <TeamLogo>
+                  <Image
+                    width={30}
+                    height={30}
+                    src={`/teams/${player.구단}.svg`}
+                    alt="구단 로고"
+                  />
+                </TeamLogo>
+                <PlayerName>{player.선수명}</PlayerName>
+              </PlayerInfo>
             </PlayerImageWrapper>
           ))}
         </ImageContainer>
@@ -121,7 +131,7 @@ export default PredictionDHPage;
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,11 +142,11 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 150px;
+  gap: 50px;
   margin-bottom: 20px;
 `;
 
-const PlayerImageWrapper = styled.div<{ teamLogo: string }>`
+const PlayerImageWrapper = styled.div`
   position: relative;
   text-align: center;
 
@@ -147,26 +157,28 @@ const PlayerImageWrapper = styled.div<{ teamLogo: string }>`
     z-index: 2;
     position: relative;
   }
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -25px;
-    left: 48%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 200px;
-    background-image: ${({ teamLogo }) => `url(${teamLogo})`};
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;
-    z-index: 1;
+const PlayerInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+`;
+
+const TeamLogo = styled.div`
+  width: 30px;
+  height: 30px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 
 const PlayerName = styled.div`
-  margin-top: 8px;
   font-size: 18px;
   font-weight: 700;
   color: black;
